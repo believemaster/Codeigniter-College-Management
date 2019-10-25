@@ -29,9 +29,25 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td></td>
-					</tr>
+					<?php if (count($collegeUsers)): ?>
+						<?php foreach ($collegeUsers as $collegeUser): ?>
+							<tr>
+								<td><?php echo $collegeUser->college_id; ?></td>
+								<td><?php echo $collegeUser->collegename; ?></td>
+								<td><?php echo $collegeUser->username; ?></td>
+								<td><?php echo $collegeUser->email; ?></td>
+								<td><?php echo $collegeUser->rolename; ?></td>
+								<td><?php echo $collegeUser->gender; ?></td>
+								<td><?php echo $collegeUser->branch; ?></td>
+							</tr>
+						<?php endforeach; ?>
+					<?php else: ?>
+						<tr>
+							<td>
+								No Records Found!
+							</td>
+						</tr>
+					<?php endif;?>
 				</tbody>
 			</table>
 		</div>

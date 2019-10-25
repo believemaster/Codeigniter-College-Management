@@ -59,11 +59,14 @@
 													'tbl_college.college_id',
 													'tbl_college.collegename',
 													'tbl_college.branch',
-													'tbl_users.rolename',
+													'tbl_roles.rolename',
 												]);
 
 			$this->db->from('tbl_college');
-			$this->db->join('tbl_users', 'tbl_college.college_id' = 'tbl_users.college_id' );
+			$this->db->join('tbl_users', 'tbl_college.college_id = tbl_users.college_id');
+			$this->db->join('tbl_roles', 'tbl_roles.role_id = tbl_users.role_id');
+			$users = $this->db->get();
+			return $users->result();
 		}
 	}
 

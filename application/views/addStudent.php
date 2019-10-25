@@ -7,6 +7,7 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="alert alert-success alert-dismissble">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
 						<?php echo $message; ?>
 					</div>
 				</div>

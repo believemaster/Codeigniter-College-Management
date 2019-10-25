@@ -13,7 +13,9 @@ class Admin extends CI_Controller {
 
 	public function dashboard()
 	{
-		$this->load->view('dashboard');
+		$this->load->model('queries');
+		$collegeUsers = $this->queries->viewAllColleges();
+		$this->load->view('dashboard', ['collegeUsers' => $collegeUsers]);
 	}
 
 	public function addCollege()
