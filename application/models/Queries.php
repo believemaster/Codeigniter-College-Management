@@ -68,6 +68,44 @@
 			$users = $this->db->get();
 			return $users->result();
 		}
+
+		public function getStudents($college_id)
+		{
+			$this->db->select([ 'tbl_college.college_id',
+													'tbl_college.collegename',
+													'tbl_student.id',
+													'tbl_student.email',
+													'tbl_student.gender',
+													'tbl_student.course',
+													'tbl_student.studentname',
+												]);
+
+			$this->db->from('tbl_student');
+			$this->db->join('tbl_college', 'tbl_college.college_id = tbl_student.college_id');
+
+			$this->db->where(['tbl_student.college_id' => $college_id]);
+			$student = $this->db->get();
+			return $student->result();
+		}
+
+		public function getStudentRecord($student_id)
+		{
+			$this->db->select([ 'tbl_college.college_id',
+													'tbl_college.collegename',
+													'tbl_student.id',
+													'tbl_student.email',
+													'tbl_student.gender',
+													'tbl_student.course',
+													'tbl_student.studentname',
+												]);
+
+			$this->db->from('tbl_student');
+			$this->db->join('tbl_college', 'tbl_college.college_id = tbl_student.college_id');
+
+			$this->db->where(['tbl_student.id' => $student_id]);
+			$student = $this->db->get();
+			return $student->row();
+		}
 	}
 
 ?>

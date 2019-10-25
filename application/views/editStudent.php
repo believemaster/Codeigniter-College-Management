@@ -1,7 +1,7 @@
 <?php include 'inc/header.php'; ?>
 
 	<div class="container">
-		<?php echo form_open("admin/createstudent", ['class'=>'form-horizontal']); ?>
+		<?php echo form_open("admin/updatestudent", ['class'=>'form-horizontal']); ?>
 
 		<?php if ($message = $this->session->flashdata('message')): ?>
 			<div class="row">
@@ -14,7 +14,7 @@
 			</div>
 		<?php endif; ?>
 
-		<h3>Admin Student</h3>
+		<h3>Edit Student</h3>
 		<hr>
 		<div class="row">
 			<div class="col-md-6">
@@ -23,7 +23,7 @@
 					<div class="col-md-9">
 						<?php echo form_input([ 'name'=>'studentname',
 																		'class'=>'form-control',
-																		'value'=>set_value('studentname'),
+																		'value'=>set_value('studentname', $studentInfo->studentname),
 																		'placeholder'=>'Student Name'
 																	]); ?>
 					</div>
@@ -39,7 +39,7 @@
 				<div class="form-group">
 					<label for="collegename" class="col-md-3 control-label">College Name</label>
 					<select class="col-md-9" name="college_id">
-						<option value="">Select</option>
+						<option value=<?php echo $studentInfo->college_id; ?>><?php echo $studentInfo->collegename; ?></option>
 						<?php if (count($colleges)): ?>
 							<?php foreach ($colleges as $college): ?>
 								<option value=<?php echo $college->college_id ?>><?php echo $college->collegename ?></option>
@@ -60,7 +60,7 @@
 					<div class="col-md-9">
 						<?php echo form_input([ 'name'=>'email',
 																		'class'=>'form-control',
-																		'value'=>set_value('email'),
+																		'value'=>set_value('email', $studentInfo->email),
 																		'placeholder'=>'Email'
 																	]); ?>
 					</div>
@@ -76,7 +76,7 @@
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">Gender</label>
 					<select class="col-md-9" name="gender">
-						<option value="">Select</option>
+						<option value=<?php echo $studentInfo->gender ?>><?php echo $studentInfo->gender ?></option>
 						<option value="male">Male</option>
 						<option value="female">Female</option>
 					</select>
@@ -94,7 +94,8 @@
 					<div class="col-md-9">
 						<?php echo form_input([ 'name'=>'course',
 																		'class'=>'form-control',
-																		'placeholder'=>'Course'
+																		'placeholder'=>'Course',
+																		'value' => set_value('course', $studentInfo->course)
 																	]); ?>
 					</div>
 				</div>
@@ -104,7 +105,7 @@
 			</div>
 		</div>
 
-		<button type="submit" class="btn btn-primary">Add Student</button>
+		<button type="submit" class="btn btn-primary">Save Student</button>
 		<?php echo anchor("admin/dashboard", "Back", ['class'=>'btn btn-primary']); ?>
 
 		<?php echo form_close(); ?>

@@ -39,6 +39,7 @@
 								<td><?php echo $collegeUser->rolename; ?></td>
 								<td><?php echo $collegeUser->gender; ?></td>
 								<td><?php echo $collegeUser->branch; ?></td>
+								<td><?php echo anchor("admin/viewstudents/{$collegeUser->college_id}", 'View', ['class'=>'btn btn-primary btn-sm mx-1']); ?></td>
 							</tr>
 						<?php endforeach; ?>
 					<?php else: ?>

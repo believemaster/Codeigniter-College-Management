@@ -73,6 +73,21 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function viewstudents($college_id)
+	{
+		$this->load->model('queries');
+		$students = $this->queries->getStudents($college_id);
+		$this->load->view('viewStudents', ['students' => $students]);
+	}
+
+	public function editStudent($student_id)
+	{
+		$this->load->model('queries');
+		$colleges = $this->queries->getColleges();
+		$studentInfo = $this->queries->getStudentRecord($student_id);
+		$this->load->view('editStudent', ['colleges' => $colleges, 'studentInfo' => $studentInfo]);
+	}
+
 	public function addModerator()
 	{
 		$this->load->model('queries');
