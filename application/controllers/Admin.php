@@ -163,4 +163,11 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function moderator()
+	{
+		$this->load->model('queries');
+		$moderator = $this->queries->viewAllColleges();
+		$this->load->view('viewModerator', ['moderator'=>$moderator]);
+	}
+
 }

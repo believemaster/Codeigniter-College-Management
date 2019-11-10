@@ -85,14 +85,29 @@ class Welcome extends CI_Controller {
 			$userExist = $this->queries->adminExist($email, $password);
 			if($userExist)
 			{
-				$sessionData = [
-					'user_id' => $userExist->user_id,
-					'username' => $userExist->username,
-					'email' => $userExist->email,
-					'role_id' => $userExist->role_id,
-				];
-				$this->session->set_userdata($sessionData);
-				return redirect('admin/dashboard');
+				if($userExist->user_id=='1')
+				{
+					$sessionData = [
+						'user_id' => $userExist->user_id,
+						'username' => $userExist->username,
+						'email' => $userExist->email,
+						'role_id' => $userExist->role_id,
+					];
+					$this->session->set_userdata($sessionData);
+					return redirect('admin/dashboard');
+				}
+				else if($userExist->user_id > '1')
+				{
+					$sessionData = [
+						'user_id' => $userExist->user_id,
+						'username' => $userExist->username,
+						'email' => $userExist->email,
+						'college_id' => $userExist->college_id,
+						'role_id' => $userExist->role_id,
+					];
+					$this->session->set_userdata($sessionData);
+					return redirect('users/dashboard');
+				}
 			} else {
 				$this->session->set_flashdata('message', 'Email or Password is incorrect');
 				return redirect('welcome/login');

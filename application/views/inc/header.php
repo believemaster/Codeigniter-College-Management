@@ -19,8 +19,13 @@
 						<?php
 							$user_id = $this->session->userdata('user_id');
 						?>
-						<li class="btn btn-lg"><?php echo anchor("admin/dashboard", 'Dashboard'); ?></li>
-						<li class="btn btn-lg"><?php echo anchor("welcome/logout", 'Logout'); ?></li>
+						<?php if($user_id == 1): ?>
+							<li class="btn btn-lg"><?php echo anchor("admin/dashboard", 'Dashboard'); ?></li>
+							<li class="btn btn-lg"><?php echo anchor("admin/moderator", 'Moderator'); ?></li>
+							<li class="btn btn-lg"><?php echo anchor("welcome/logout", 'Logout'); ?></li>
+						<?php else: ?>
+							<li class="btn btn-lg"><?php echo anchor("welcome/logout", 'Logout'); ?></li>
+						<?php endif; ?>
 					</ul>
 				</div>
 			</div>
