@@ -106,6 +106,13 @@
 			$student = $this->db->get();
 			return $student->row();
 		}
+
+		public function updateStudent($data, $id)
+		{
+			return $this->db->where('id', $id)
+											->update('tbl_student', $data);
+		}
+
 	}
 
 ?>

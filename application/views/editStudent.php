@@ -1,7 +1,7 @@
 <?php include 'inc/header.php'; ?>
 
 	<div class="container">
-		<?php echo form_open("admin/updatestudent", ['class'=>'form-horizontal']); ?>
+		<?php echo form_open("admin/modifystudent/{$studentInfo->id}", ['class'=>'form-horizontal']); ?>
 
 		<?php if ($message = $this->session->flashdata('message')): ?>
 			<div class="row">

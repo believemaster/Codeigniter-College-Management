@@ -128,4 +128,28 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function modifystudent($id)
+	{
+		$this->form_validation->set_rules('studentname','Student Name', 'required');
+		$this->form_validation->set_rules('college_id','College Name', 'required');
+		$this->form_validation->set_rules('email','Email', 'required');
+		$this->form_validation->set_rules('gender','Gender', 'required');
+		$this->form_validation->set_rules('course','Course', 'required');
+
+		if ($this->form_validation->run()) {
+			$data = $this->input->post();
+
+			$this->load->model('queries');
+			if ($this->queries->updateStudent($data, $id)) {
+				$this->session->set_flashdata('message', 'Student Updated Successfully');
+			} else {
+				$this->session->set_flashdata('message', 'Failed To Update!');
+			}
+
+			return redirect('admin/addStudent');
+		} else {
+			$this->editStudent();
+		}
+	}
+
 }
