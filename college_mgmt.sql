@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2019 at 02:05 PM
+-- Generation Time: Nov 10, 2019 at 10:14 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -33,15 +33,6 @@ CREATE TABLE `tbl_college` (
   `collegename` varchar(200) NOT NULL,
   `branch` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_college`
---
-
-INSERT INTO `tbl_college` (`college_id`, `collegename`, `branch`) VALUES
-(1, 'ABC', 'Delhi'),
-(2, 'XYZ', 'Mumbai'),
-(3, 'PQR', 'Bangalore');
 
 -- --------------------------------------------------------
 
@@ -77,15 +68,6 @@ CREATE TABLE `tbl_student` (
   `course` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tbl_student`
---
-
-INSERT INTO `tbl_student` (`id`, `studentname`, `college_id`, `gender`, `email`, `course`) VALUES
-(1, 'Student1', 2, 'male', 'student@mail.com', 'B.Tech'),
-(2, 'Student2', 1, 'female', 'student2@mail.com', 'B.Sc'),
-(3, 'Student3', 3, 'male', 'studedent3@mail.com', 'B.Com');
-
 -- --------------------------------------------------------
 
 --
@@ -102,15 +84,6 @@ CREATE TABLE `tbl_users` (
   `password` varchar(255) NOT NULL,
   `confpwd` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_users`
---
-
-INSERT INTO `tbl_users` (`user_id`, `username`, `college_id`, `email`, `gender`, `role_id`, `password`, `confpwd`) VALUES
-(1, 'admin', 0, 'admin@admin.com', 'male', 1, 'd033e22ae348aeb5660fc2140aec35850c4da997', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
-(2, 'moderator', 1, 'moderator@mail.com', 'male', 2, '79f52b5b92498b00cb18284f1dcb466bd40ad559', '79f52b5b92498b00cb18284f1dcb466bd40ad559'),
-(3, 'Co Admin', 2, 'coadmin', 'female', 2, '3ccd37607782bec813810b92d76b9d31a37d1252', '3ccd37607782bec813810b92d76b9d31a37d1252');
 
 --
 -- Indexes for dumped tables
@@ -148,7 +121,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_college`
 --
 ALTER TABLE `tbl_college`
-  MODIFY `college_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `college_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_roles`
@@ -160,13 +133,13 @@ ALTER TABLE `tbl_roles`
 -- AUTO_INCREMENT for table `tbl_student`
 --
 ALTER TABLE `tbl_student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
