@@ -152,4 +152,15 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function deletestudent($id)
+	{
+		$this->load->model('queries');
+		if($this->queries->removeStudent($id))
+		{
+			return redirect('admin/dashboard');
+		} else {
+			return redirect('admin/dashboard');
+		}
+	}
+
 }

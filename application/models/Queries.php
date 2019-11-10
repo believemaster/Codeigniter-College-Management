@@ -113,6 +113,11 @@
 											->update('tbl_student', $data);
 		}
 
+		public function removeStudent($id)
+		{
+			$this->db->delete('tbl_student', ['id'=>$id]);
+		}
+
 	}
 
 ?>
